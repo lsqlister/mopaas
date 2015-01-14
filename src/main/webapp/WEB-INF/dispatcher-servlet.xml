@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- <mvc:default-servlet-handler /> -->
+	<context:component-scan base-package="com.lansq.test" />
+	<mvc:annotation-driven />
+	<!-- 配置静态访问 -->
+	<!-- <mvc:resources mapping="/*" location="/*" /> -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" /> -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->
+
+	<!-- 注册视图解析器，说白了就是根据返回值指定到某个页面 -->
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+	<!-- <property name="prefix" value="/"></property> -->
+	<!--页面文件的路径，在根目录下 -->
+	<!-- </bean> -->
+
+
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="prefix" value="/WEB-INF/jsp/" /> -->
+	<!-- <property name="suffix" value=".jsp" /> -->
+	<!-- </bean> -->
+
+
+</beans>
