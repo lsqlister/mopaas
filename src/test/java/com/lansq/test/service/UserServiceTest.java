@@ -15,14 +15,14 @@ public class UserServiceTest extends BaseServiceTest {
 	public void save() throws Exception {
 		User user = new User();
 		user.setEmail("xxxx");
-		userService.save(user);
+		// userService.save(user);
 	}
-	
+
 	@Test
 	public void getAll() throws Exception {
-		List<User> users = userService.getAll();
-		for (User user : users) {
-			System.out.println(user);
-		}
+		// List<User> users = userService.getAll();
+		// for (User user : users) {
+		// System.out.println(user);
+		// }
 	}
 }
