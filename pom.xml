@@ -23,7 +23,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.springframework.version>3.2.0.RELEASE</org.springframework.version>
-		<hibernate.version>4.2.5.Final</hibernate.version>
+		<hibernate.version>4.0.0.Final</hibernate.version>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
 	</properties>
 
@@ -155,11 +155,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>jexcelapi</groupId>
-			<artifactId>jxl</artifactId>
-			<version>2.6</version>
-		</dependency>
-		<dependency>
 			<groupId>quartz</groupId>
 			<artifactId>quartz</artifactId>
 			<version>1.5.2</version>
@@ -169,7 +164,6 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.1</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework</groupId>
