@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-<!-- 	<context:component-scan base-package="com.lansq.test" /> -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
 
 	<tx:annotation-driven />
 
@@ -20,22 +20,21 @@
 			<value>com.mysql.jdbc.Driver</value>
 		</property>
 		<property name="url">
-			<value>jdbc:mysql://${MOPAAS_MYSQL891_HOST}:${MOPAAS_MYSQL891_PORT}/${MOPAAS_MYSQL891_NAME}?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true
-			</value>
+			<value>jdbc:mysql://${MOPAAS_MYSQL20359_HOST}:${MOPAAS_MYSQL20359_PORT}/${MOPAAS_MYSQL20359_NAME}?useUnicode=true&amp;characterEncoding=utf-8</value>
 		</property>
 		<property name="username">
-			<value>${MOPAAS_MYSQL891_USERNAME}</value>
+			<value>${MOPAAS_MYSQL20359_USERNAME}</value>
 		</property>
 		<property name="password">
-			<value>${MOPAAS_MYSQL891_PASSWORD}</value>
+			<value>${MOPAAS_MYSQL20359_PASSWORD}</value>
 		</property>
 	</bean>
 
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" p:dataSource-ref="dataSource">
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<!-- <prop key="hibernate.show_sql">true</prop> -->
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
 			</props>
 		</property>
 		<property name="mappingLocations" value="classpath:com/lansq/test/domain/*.hbm.xml" />

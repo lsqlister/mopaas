@@ -5,7 +5,7 @@
 	<artifactId>test</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lansq Maven Webapp</name>
+	<name>mopass Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 
@@ -13,20 +13,19 @@
 		<developer>
 			<id>lansq</id>
 			<name>lansq</name>
-			<email>lansq@itsource.com</email>
+			<email>lsq@itsource.cn</email>
 			<url>www.itsource.cn</url>
 			<timezone>8</timezone>
 		</developer>
 	</developers>
-	
-	
+
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.springframework.version>3.2.0.RELEASE</org.springframework.version>
 		<hibernate.version>4.2.5.Final</hibernate.version>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
 	</properties>
-
 
 	<dependencies>
 		<dependency>
@@ -96,6 +95,12 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${org.slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.2.0.Final</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -180,8 +185,9 @@
 		</dependency>
 
 	</dependencies>
+
 	<build>
-		<finalName>ROOT</finalName>
+		<finalName>mopass</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -205,6 +211,50 @@
 					</webAppConfig>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.2-SNAPSHOT</version>
+				<configuration>
+					<url>${deploy.url}</url>
+					<server>tomcat</server>
+					<path>/appcontext</path>
+				</configuration>
+			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 -->
+				<excludes>
+					<exclude>development/*</exclude>
+					<exclude>production/*</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources/${profiles.active}</directory>
+			</resource>
+		</resources>
 	</build>
+	<profiles>
+		<profile>
+			<!-- 本地开发环境 -->
+			<id>development</id>
+			<properties>
+				<profiles.active>development</profiles.active>
+				<deploy.url>http://host:port/manager/text</deploy.url>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>production</id>
+			<properties>
+				<profiles.active>production</profiles.active>
+				<deploy.url>http://host:port/manager/text</deploy.url>
+			</properties>
+		</profile>
+	</profiles>
 </project>

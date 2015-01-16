@@ -1,5 +1,7 @@
 package com.lansq.test.service;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,5 +16,13 @@ public class UserServiceTest extends BaseServiceTest {
 		User user = new User();
 		user.setEmail("xxxx");
 		userService.save(user);
+	}
+	
+	@Test
+	public void getAll() throws Exception {
+		List<User> users = userService.getAll();
+		for (User user : users) {
+			System.out.println(user);
+		}
 	}
 }

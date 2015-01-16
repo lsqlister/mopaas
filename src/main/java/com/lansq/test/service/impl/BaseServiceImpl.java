@@ -20,10 +20,8 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
 	private Class<T> entityClass;
 
 	public BaseServiceImpl() {
-		Class clazz = getClass();// 如果父类是抽象类，肯定是子类的class,如果父类不是抽象类,看实例化的那个类(父类还是子类)
-		// System.out.println("BaseServiceImpl:" + clazz);
+		Class clazz = getClass();
 		Type type = clazz.getGenericSuperclass();
-		// System.out.println("BaseServiceImpl:" + type);
 		if (type instanceof ParameterizedType) {
 			ParameterizedType parameterizedType = (ParameterizedType) type;
 			entityClass = (Class) parameterizedType.getActualTypeArguments()[0];
